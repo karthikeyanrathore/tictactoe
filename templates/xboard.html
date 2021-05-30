@@ -42,15 +42,24 @@
 <div class="col">
 <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "22")}}" class="text-decoration-none"> X turn</a></div>
 
+</form>
 
 </div>
 </div>
 </div>
+
+{% if error is not none %}
+<br></br>
+<div class="alert alert-primary" role="alert">
+  {{error}}
+</div>
+{% endif %}
+
 
 
 <br></br>
 <div class="col-md-10 text-center">
-<button type="button" class="btn btn-light"><a href ="{{url_for("clear")}}">Clear Board</a></button>
+<a href ="{{url_for("clear")}}">Clear Board</a>
 </div>
 
 

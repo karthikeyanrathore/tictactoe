@@ -47,10 +47,19 @@
 </div>
 </div>
 
+{% if error is not none %}
+<br></br>
+<div class="alert alert-primary" role="alert">
+  {{error}}
+</div>
+{% endif %}
+
+
+
 
 <br></br>
 <div class="col-md-10 text-center">
-<button type="button" class="btn btn-light"><a href ="{{url_for("clear")}}">Clear Board</a></button>
+<a href ="{{url_for("clear")}}">Clear Board</a>
 </div>
 
 

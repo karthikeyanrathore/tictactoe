@@ -54,55 +54,55 @@ class Matrix3x3(object):
         self.board[0][0] = "X"
         if(self._check("X") == 1):
           print("X won")
-          exit(0)
+          return 1
         self._print()
       elif(self.position == "01" and self.board[0][1] == 0):
         self.board[0][1] = "X"
         if(self._check("X") == 1):
           print("X won")
-          exit(0)
+          return 1
         self._print()
       elif(self.position == "02" and self.board[0][2] == 0):
         self.board[0][2] = "X"
         if(self._check("X") == 1):
           print("X won")
-          exit(0)
+          return 1
         self._print()
       elif(self.position == "10" and self.board[1][0] == 0):
         self.board[1][0] = "X"
         if(self._check("X") == 1):
           print("X won")
-          exit(0)
+          return 1
         self._print()
       elif(self.position == "11" and self.board[1][1] == 0):
         self.board[1][1] = "X"
         if(self._check("X") == 1):
           print("X won")
-          exit(0)
+          return 1
         self._print()
       elif(self.position == "12" and self.board[1][2] == 0):
         self.board[1][2] = "X"
         if(self._check("X") == 1):
           print("X won")
-          exit(0)
+          return 1
         self._print()
       elif(self.position == "20" and self.board[2][0] == 0):
         self.board[2][0] = "X"
         if(self._check("X") == 1):
           print("X won")
-          exit(0)
+          return 1
         self._print()
       elif(self.position == "21" and self.board[2][1] == 0):
         self.board[2][1] = "X"
         if(self._check("X") == 1):
           print("X won")
-          exit(0)
+          return 1
         self._print()
       elif(self.position == "22" and self.board[2][2] == 0):
         self.board[2][2] = "X"
         if(self._check("X") == 1):
           print("X won")
-          exit(0)
+          return 1
         self._print()
       else:
         self.turn -= 1
@@ -115,61 +115,63 @@ class Matrix3x3(object):
         self.board[0][0] = "O"
         if(self._check("O") == 1):
           print("O won")
-          exit(0)
+          return 2
         self._print()
       elif(self.position == "01" and self.board[0][1] == 0):
         self.board[0][1] = "O"
         if(self._check("O") == 1):
           print("O won")
-          exit(0)
+          return 2
         self._print()
       elif(self.position == "02" and self.board[0][2] == 0):
         self.board[0][2] = "O"
         if(self._check("O") == 1):
           print("O won")
-          exit(0)
+          return 2
         self._print()
       elif(self.position == "10" and self.board[1][0] == 0):
         self.board[1][0] = "O"
         if(self._check("O") == 1):
           print("O won")
-          exit(0)
+          return 2
         self._print()
       elif(self.position == "11" and self.board[1][1] == 0):
         self.board[1][1] = "O"
         if(self._check("O") == 1):
           print("O won")
-          exit(0)
+          return 2
         self._print()
       elif(self.position == "12" and self.board[1][2] == 0):
         self.board[1][2] = "O"
         if(self._check("O") == 1):
           print("O won")
-          exit(0)
+          return 2
         self._print()
       elif(self.position == "20" and self.board[2][0] == 0):
         self.board[2][0] = "O"
         if(self._check("O") == 1):
           print("O won")
-          exit(0)
+          return 2
         self._print()
       elif(self.position == "21" and self.board[2][1] == 0):
         self.board[2][1] = "O"
         if(self._check("O") == 1):
           print("O won")
-          exit(0)
+          return 2
         self._print()
       elif(self.position == "22" and self.board[2][2] == 0):
         self.board[2][2] = "O"
         if(self._check("O") == 1):
           print("O won")
-          exit(0)
+          return 2
         self._print()
       else:
         self.turn -= 1
         return -1
 
   def _clear(self):
+    self.position = ""
+    self.turn = 0
     for i in range(3):
       for j in range(3):
         self.board[i][j] = 0
@@ -186,18 +188,25 @@ def Board():
   error = None
   position = request.args.get('type')
   print(position)
+
   if(position is not None):
     if(play._whosturn() == 1):
-      if(play._add(position) == -1):
+      output = play._add(position)
+      if(output == -1):
         error = "position %s is invalid" %(position);
         print(error)
         return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position)
+      if(output == 1):
+        return "X won"
       return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position)
     else:
-      if(play._add(position) == -1):
+      output = play._add(position)
+      if(output == -1):
         error = "position %s is invalid" %(position);
         print(error)
         return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position)
+      if(output == 2):
+        return "O won"
       return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position)
   return render_template("board.html" , error = error , turn = play._whosturn() , pos = position)
 
