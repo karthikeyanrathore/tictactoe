@@ -3,7 +3,6 @@ from flask import Flask
 from flask import abort, redirect, url_for , render_template , request
 app = Flask(__name__)
 
-
 class Matrix3x3(object):
   def __init__(self , board):
     self.board = board
@@ -125,42 +124,69 @@ class Matrix3x3(object):
           exit(0)
         if(self.position == "00" and self.board[0][0] == 0):
           self.board[0][0] = "O"
+          if(self._check("O") == 1):
+            print("O won")
+            exit(0)
           self._print()
           break
         elif(self.position == "01" and self.board[0][1] == 0):
           self.board[0][1] = "O"
+          if(self._check("O") == 1):
+            print("O won")
+            exit(0)
           self._print()
           break
         elif(self.position == "02" and self.board[0][2] == 0):
           self.board[0][2] = "O"
+          if(self._check("O") == 1):
+            print("O won")
+            exit(0)
           self._print()
           break
         elif(self.position == "10" and self.board[1][0] == 0):
           self.board[1][0] = "O"
+          if(self._check("O") == 1):
+            print("O won")
+            exit(0)
           self._print()
           break
         elif(self.position == "11" and self.board[1][1] == 0):
           self.board[1][1] = "O"
+          if(self._check("O") == 1):
+            print("O won")
+            exit(0)
           self._print()
           break
         elif(self.position == "12" and self.board[1][2] == 0):
           self.board[1][2] = "O"
+          if(self._check("O") == 1):
+            print("O won")
+            exit(0)
           self._print()
           break
         elif(self.position == "20" and self.board[2][0] == 0):
           self.board[2][0] = "O"
+          if(self._check("O") == 1):
+            print("O won")
+            exit(0)
           self._print()
           break
         elif(self.position == "21" and self.board[2][1] == 0):
           self.board[2][1] = "O"
+          if(self._check("O") == 1):
+            print("O won")
+            exit(0)
           self._print()
           break
         elif(self.position == "22" and self.board[2][2] == 0):
           self.board[2][2] = "O"
+          if(self._check("O") == 1):
+            print("O won")
+            exit(0)
           self._print()
           break
         else:
-          print("position %s is taken" % (self.position))
+          print("position %s is invalid" % (self.position))
 
   def _clear(self):
     for i in range(3):
@@ -197,6 +223,5 @@ if __name__ == "__main__":
       board[i][j] = 0
   play = Matrix3x3(board)
   play._clear()
-  while(1):
-    play._add()
+  play._add()
 
