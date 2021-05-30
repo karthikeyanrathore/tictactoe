@@ -43,7 +43,13 @@ class Matrix3x3(object):
       print("\n")
       print("-----------")
 
-  
+  def _draw(self):
+    for i in range(3):
+      for j in range(3):
+        if(board[i][j] == 0):
+          return 0
+    return 1    
+
   def _add(self , pos):
     self.position = pos;
     if(self._turn() == 1):
@@ -183,12 +189,26 @@ class Matrix3x3(object):
       return 0;
 
 
+@app.route('/X')
+def x_won():
+  return render_template("x_won.html")
+ 
+@app.route('/O')
+def o_won():
+  return render_template("o_won.html")
+ 
+@app.route('/Draw')
+def draw():
+  return render_template("draw.html")
+ 
+
+
+
 @app.route('/')
 def Board():
   error = None
   position = request.args.get('type')
   print(position)
-
   if(position is not None):
     if(play._whosturn() == 1):
       output = play._add(position)
@@ -197,7 +217,9 @@ def Board():
         print(error)
         return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position)
       if(output == 1):
-        return "X won"
+        return redirect(url_for('x_won'))
+      if(play._draw() == 1):
+        return redirect(url_for('draw'))
       return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position)
     else:
       output = play._add(position)
@@ -206,7 +228,9 @@ def Board():
         print(error)
         return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position)
       if(output == 2):
-        return "O won"
+        return redirect(url_for('o_won'))
+      if(play._draw() == 1):
+        return redirect(url_for('draw'))
       return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position)
   return render_template("board.html" , error = error , turn = play._whosturn() , pos = position)
 
