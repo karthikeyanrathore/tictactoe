@@ -215,24 +215,24 @@ def Board():
       if(output == -1):
         error = "position %s is invalid" %(position);
         print(error)
-        return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position)
+        return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position ,board = play.board)
       if(output == 1):
         return redirect(url_for('x_won'))
       if(play._draw() == 1):
         return redirect(url_for('draw'))
-      return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position)
+      return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
     else:
       output = play._add(position)
       if(output == -1):
         error = "position %s is invalid" %(position);
         print(error)
-        return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position)
+        return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
       if(output == 2):
         return redirect(url_for('o_won'))
       if(play._draw() == 1):
         return redirect(url_for('draw'))
-      return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position)
-  return render_template("board.html" , error = error , turn = play._whosturn() , pos = position)
+      return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
+  return render_template("board.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
 
 @app.route('/clear')
 def clear():

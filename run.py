@@ -42,11 +42,12 @@ class Matrix3x3(object):
       print("\n")
       print("-----------")
 
-  
+
+    
   def _add(self):
     if(self._turn() == 1):
       while(1):
-        print("X")
+        print("X turn")
         self.position = input()
         if(self.position == 'q' or self.position == 'Q'):
           exit(0)
@@ -118,7 +119,7 @@ class Matrix3x3(object):
           print("position %s is taken" % (self.position))
     else:
      while(1):
-        print("O")
+        print("O Turn")
         self.position = input()
         if(self.position == 'q' or self.position == 'Q'):
           exit(0)
@@ -223,5 +224,6 @@ if __name__ == "__main__":
       board[i][j] = 0
   play = Matrix3x3(board)
   play._clear()
-  play._add()
+  while(1):
+    play._add()
 

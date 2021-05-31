@@ -10,37 +10,150 @@
 <div class="container">
 <div class="row row-cols-1 row-cols-lg-3 g-2 g-lg-3">
 
+{% if board[0][0] == "X" %}
+<div class="col">
+<h3> X </h3>
+</div>
+{% elif board[0][0] == "O" %}
+<div class="col">
+<h3> O </h3>
+</div>
+{% else %}
 <div class="col">
   <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "00")}}" class="text-decoration-none"> X turn</a></div>
 </div>
-
-<div class="col">
-<div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "01")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-<div class="col">
-<div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "02")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-<div class="col">
-<div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "10")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-<div class="col">
-<div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "11")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-<div class="col">
-<div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "12")}}" class="text-decoration-none"> X turn</a></div>
+{% endif %}
 
 
-</div>
+{% if board[0][1] == "X" %}
 <div class="col">
-<div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "20")}}" class="text-decoration-none"> X turn</a></div>
+<h3> X </h3>
+</div>
+{% elif board[0][1] == "O" %}
+<div class="col">
+<h3> O </h3>
+</div>
+{% else %}
+<div class="col">
+  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "01")}}" class="text-decoration-none"> X turn</a></div>
+</div>
+{% endif %}
 
-</div>
-<div class="col">
-<div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "21")}}"class="text-decoration-none"> X turn</a></div>
 
-</div>
+{% if board[0][2] == "X" %}
 <div class="col">
-<div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "22")}}" class="text-decoration-none"> X turn</a></div>
+<h3> X </h3>
+</div>
+{% elif board[0][2] == "O" %}
+<div class="col">
+<h3> O </h3>
+</div>
+{% else %}
+<div class="col">
+  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "02")}}" class="text-decoration-none"> X turn</a></div>
+</div>
+{% endif %}
+
+
+
+{% if board[1][0] == "X" %}
+<div class="col">
+<h3> X </h3>
+</div>
+{% elif board[1][0] == "O" %}
+<div class="col">
+<h3> O </h3>
+</div>
+{% else %}
+<div class="col">
+  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "10")}}" class="text-decoration-none"> X turn</a></div>
+</div>
+{% endif %}
+
+
+
+{% if board[1][1] == "X" %}
+<div class="col">
+<h3> X </h3>
+</div>
+{% elif board[1][1] == "O" %}
+<div class="col">
+<h3> O </h3>
+</div>
+{% else %}
+<div class="col">
+  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "11")}}" class="text-decoration-none"> X turn</a></div>
+</div>
+{% endif %}
+
+
+
+{% if board[1][2] == "X" %}
+<div class="col">
+<h3> X </h3>
+</div>
+{% elif board[1][2] == "O" %}
+<div class="col">
+<h3> O </h3>
+</div>
+{% else %}
+<div class="col">
+  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "12")}}" class="text-decoration-none"> X turn</a></div>
+</div>
+{% endif %}
+
+
+
+
+{% if board[2][0] == "X" %}
+<div class="col">
+<h3> X </h3>
+</div>
+{% elif board[2][0] == "O" %}
+<div class="col">
+<h3> O </h3>
+</div>
+{% else %}
+<div class="col">
+  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "20")}}" class="text-decoration-none"> X turn</a></div>
+</div>
+{% endif %}
+
+
+
+
+{% if board[2][1] == "X" %}
+<div class="col">
+<h3> X </h3>
+</div>
+{% elif board[2][1] == "O" %}
+<div class="col">
+<h3> O </h3>
+</div>
+{% else %}
+<div class="col">
+  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "21")}}" class="text-decoration-none"> X turn</a></div>
+</div>
+{% endif %}
+
+
+
+{% if board[2][2] == "X" %}
+<div class="col">
+<h3> X </h3>
+</div>
+{% elif board[2][2] == "O" %}
+<div class="col">
+<h3> O </h3>
+</div>
+{% else %}
+<div class="col">
+  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "22")}}" class="text-decoration-none"> X turn</a></div>
+</div>
+{% endif %}
+
+
+
 
 </form>
 
