@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<h3   class="position-absolute top-50 start-50 translate-middle" style="font-family:monospace;"> X WON THE GAME  </h3>
+
+
+
+
+
+
+
+{% endblock %}
+
+

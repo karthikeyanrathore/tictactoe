@@ -213,7 +213,7 @@ def Board():
     if(play._whosturn() == 1):
       output = play._add(position)
       if(output == -1):
-        error = "position %s is invalid" %(position);
+        error = "position board[%s][%s] is invalid" %(position[0] , position[1]);
         print(error)
         return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position ,board = play.board)
       if(output == 1):
@@ -224,7 +224,7 @@ def Board():
     else:
       output = play._add(position)
       if(output == -1):
-        error = "position %s is invalid" %(position);
+        error = "position board[%s][%s] is invalid" %(position[0] , position[1]);
         print(error)
         return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
       if(output == 2):
