@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from flask import Flask
 from flask import abort, redirect, url_for , render_template , request , flash
+import math
 app = Flask(__name__)
 app.secret_key = 'usr'
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -195,6 +196,69 @@ class Matrix3x3(object):
     col = int(self.position[1])
     self.board[row][col] = 0
 
+  # https://en.wikipedia.org/wiki/Minimax
+  def minimax(self , mx):
+    if(self._check("X") == 1):
+      return 1
+    if(self._check("O") == 1):
+      return -1
+    if(self._draw() == 1):
+      return 0
+    if(mx):
+      value = -math.inf
+      for i in range(3):
+        for j in range(3):
+          if(self.board[i][j] == 0):
+            self.board[i][j] = "X"
+            value = max(value , self.minimax(False))
+            self.board[i][j] = 0
+      return value
+    else:
+      value = math.inf
+      for i in range(3):
+        for j in range(3):
+          if(self.board[i][j] == 0):
+            self.board[i][j] = "O"
+            value = min(value , self.minimax(True))
+            self.board[i][j] = 0
+      return value
+  
+  def _obest(self):
+    row = -1
+    col = -1
+    best = math.inf
+    for i in range(3):
+      for j in range(3):
+        if(self.board[i][j] == 0):
+          self.board[i][j] = "O"
+          result = self.minimax(True)
+          self.board[i][j] = 0
+          if(best > result):
+            row = i
+            col = j
+            best = result
+    #print("row %d col %d" % (row , col))
+    best_position = str(row) + str(col)
+    return best_position
+
+  def _xbest(self):
+    row = -1
+    col = -1
+    best = -math.inf
+    for i in range(3):
+      for j in range(3):
+        if(self.board[i][j] == 0):
+          self.board[i][j] = "X"
+          result = self.minimax(False)
+          self.board[i][j] = 0
+          if(best < result):
+            row = i
+            col = j
+            best = result
+    #print("row %d col %d" % (row , col))
+    best_position = str(row) + str(col)
+    return best_position
+
 
 @app.route('/X/<int:moves>')
 def x_won(moves):
@@ -209,7 +273,45 @@ def o_won(moves):
 @app.route('/Draw')
 def draw():
   return render_template("draw.html")
- 
+
+
+@app.route('/ai/oai')
+def o_ai():
+  error = None
+  ai_result = play._obest()
+  output = play._add(ai_result)
+  print("ai %s" %(output))
+  if(output == -1):
+    error = "error";
+    print(error)
+  if(output == 2):
+    return redirect(url_for('o_won' , moves = play.turn))
+  if(play._draw() == 1):
+    return redirect(url_for('draw'))
+  play.count = 0
+  return redirect(url_for("ai"))
+
+
+@app.route('/ai')
+def ai():
+  error = None
+  position = request.args.get('type')
+  print(position)
+  
+  if(position is not None):
+    if(play._whosturn() == 1):
+      output = play._add(position)
+      if(output == -1):
+        error = "error";
+        print(error)
+        return render_template("ai/xboard.html" , error = error , turn = play._whosturn() , pos = position ,board = play.board)
+      if(output == 1):
+        return redirect(url_for('x_won' , moves = play.turn))
+      if(play._draw() == 1):
+        return redirect(url_for('draw'))
+      return redirect(url_for("o_ai"))
+  return render_template("ai/board.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
+
 
 
 @app.route('/')
@@ -281,6 +383,8 @@ if __name__ == "__main__":
       play._undo()
       play._print()
       continue
+    if(pos == "a"):
+      print(play._obest())
     play._add(pos)
   '''
   app.run(debug=True)
