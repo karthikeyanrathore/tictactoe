@@ -1,1 +1,1 @@
-web: gunicorn  app:play
+web: gunicorn  play:app
