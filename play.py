@@ -205,7 +205,6 @@ def draw():
  
 
 
-
 @app.route('/')
 def Board():
   error = None
