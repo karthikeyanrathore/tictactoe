@@ -1,6 +1,6 @@
-
 Board = 3x3
+https://en.wikipedia.org/wiki/Minimax
 
-x first
-
+chmod +x play.py
+./play
 
