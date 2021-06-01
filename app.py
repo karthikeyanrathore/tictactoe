@@ -373,6 +373,7 @@ if __name__ == "__main__":
     for j in range(3):
       board[i][j] = 0
 
+  global play 
   play = Matrix3x3(board)
   play._clear()
 
