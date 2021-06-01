@@ -373,7 +373,6 @@ if __name__ == "__main__":
     for j in range(3):
       board[i][j] = 0
 
-  global play 
   play = Matrix3x3(board)
   play._clear()
 
@@ -389,5 +388,8 @@ if __name__ == "__main__":
     play._add(pos)
   '''
   app.run(debug=True)
+  play = Matrix3x3(board)
+  play._clear()
+
 
   # app.run(debug=True)
