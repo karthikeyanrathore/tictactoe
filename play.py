@@ -376,7 +376,3 @@ for i in range(3):
 play = Matrix3x3(board)
 play._clear()
 
-if __name__ == "__main__":
- app.run(debug=True)
-
-  # app.run(debug=True)
