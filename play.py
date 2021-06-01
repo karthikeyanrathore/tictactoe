@@ -367,26 +367,16 @@ def undo():
   return redirect(url_for("Board"))
 
 
+
+board = [[0 for i in range(3)] for j in range(3)]
+for i in range(3):
+  for j in range(3):
+    board[i][j] = 0
+
+play = Matrix3x3(board)
+play._clear()
+
 if __name__ == "__main__":
-  board = [[0 for i in range(3)] for j in range(3)]
-  for i in range(3):
-    for j in range(3):
-      board[i][j] = 0
-
-  play = Matrix3x3(board)
-  play._clear()
-
-  '''
-  while(1):
-    pos = input()
-    if(pos == "u"):
-      play._undo()
-      play._print()
-      continue
-    if(pos == "a"):
-      print(play._obest())
-    play._add(pos)
-  '''
-  app.run(debug=True)
+ app.run(debug=True)
 
   # app.run(debug=True)
