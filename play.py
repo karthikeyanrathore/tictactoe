@@ -10,6 +10,7 @@ class Matrix3x3(object):
     self.board = board
     self.position = ""
     self.turn = 0
+    self.count = 0
   
   def _turn(self):
     if(self.turn % 2 == 0):
@@ -187,6 +188,12 @@ class Matrix3x3(object):
       return 1;
     else:
       return 0;
+  
+  def _undo(self):
+    self.turn -= 1 
+    row = int(self.position[0])
+    col = int(self.position[1])
+    self.board[row][col] = 0
 
 
 @app.route('/X/<int:moves>')
@@ -210,34 +217,51 @@ def Board():
   error = None
   position = request.args.get('type')
   print(position)
+
+  if(position == "u" and play.count % 2 == 0):
+    play._undo()
+    play._print()
+    play.count += 1
+    if(play._whosturn() == 1):
+      return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
+    return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
+  
   if(position is not None):
     if(play._whosturn() == 1):
       output = play._add(position)
       if(output == -1):
-        error = "position board[%s][%s] is invalid" %(position[0] , position[1]);
+        error = "error";
         print(error)
         return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position ,board = play.board)
       if(output == 1):
         return redirect(url_for('x_won' , moves = play.turn))
       if(play._draw() == 1):
         return redirect(url_for('draw'))
+      play.count = 0
       return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
     else:
       output = play._add(position)
       if(output == -1):
-        error = "position board[%s][%s] is invalid" %(position[0] , position[1]);
+        error = "error";
         print(error)
         return render_template("oboard.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
       if(output == 2):
         return redirect(url_for('o_won' , moves = play.turn))
       if(play._draw() == 1):
         return redirect(url_for('draw'))
+      play.count = 0
       return render_template("xboard.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
   return render_template("board.html" , error = error , turn = play._whosturn() , pos = position , board = play.board)
 
 @app.route('/clear')
 def clear():
   play._clear()
+  return redirect(url_for("Board"))
+
+
+@app.route('/undo')
+def undo():
+  play._undo()
   return redirect(url_for("Board"))
 
 
@@ -250,4 +274,15 @@ if __name__ == "__main__":
   play = Matrix3x3(board)
   play._clear()
 
+  '''
+  while(1):
+    pos = input()
+    if(pos == "u"):
+      play._undo()
+      play._print()
+      continue
+    play._add(pos)
+  '''
   app.run(debug=True)
+
+  # app.run(debug=True)

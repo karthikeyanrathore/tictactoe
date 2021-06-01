@@ -40,6 +40,7 @@ table {
   <tr>
 
 <form method = "POST">
+<a class="position-absolute top-50 start-10 translate-middle-y" href="{{url_for("Board" , type = "u")}}">Undo Move</a>
 {% if board[0][0] == "X" %}
 <td><h2> X </h2></td>
 {% elif board[0][0] == "O" %}
