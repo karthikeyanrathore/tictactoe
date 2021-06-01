@@ -1,178 +1,131 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container h-100 p-5">
-<div class="row h-100 justify-content-center align-items-center">
-<div class="col-70 col-md-100 col-lg-9">
-
-
-<form method = "POST">
-<div class="container">
-<div class="row row-cols-1 row-cols-lg-3 g-2 g-lg-3">
-
-{% if board[0][0] == "X" %}
-<div class="col">
-<h3> X </h3>
-</div>
-{% elif board[0][0] == "O" %}
-<div class="col">
-<h3> O </h3>
-</div>
-{% else %}
-<div class="col">
-  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "00")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-{% endif %}
-
-
-{% if board[0][1] == "X" %}
-<div class="col">
-<h3> X </h3>
-</div>
-{% elif board[0][1] == "O" %}
-<div class="col">
-<h3> O </h3>
-</div>
-{% else %}
-<div class="col">
-  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "01")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-{% endif %}
-
-
-{% if board[0][2] == "X" %}
-<div class="col">
-<h3> X </h3>
-</div>
-{% elif board[0][2] == "O" %}
-<div class="col">
-<h3> O </h3>
-</div>
-{% else %}
-<div class="col">
-  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "02")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-{% endif %}
-
-
-
-{% if board[1][0] == "X" %}
-<div class="col">
-<h3> X </h3>
-</div>
-{% elif board[1][0] == "O" %}
-<div class="col">
-<h3> O </h3>
-</div>
-{% else %}
-<div class="col">
-  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "10")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-{% endif %}
-
-
-
-{% if board[1][1] == "X" %}
-<div class="col">
-<h3> X </h3>
-</div>
-{% elif board[1][1] == "O" %}
-<div class="col">
-<h3> O </h3>
-</div>
-{% else %}
-<div class="col">
-  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "11")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-{% endif %}
-
-
-
-{% if board[1][2] == "X" %}
-<div class="col">
-<h3> X </h3>
-</div>
-{% elif board[1][2] == "O" %}
-<div class="col">
-<h3> O </h3>
-</div>
-{% else %}
-<div class="col">
-  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "12")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-{% endif %}
-
-
-
-
-{% if board[2][0] == "X" %}
-<div class="col">
-<h3> X </h3>
-</div>
-{% elif board[2][0] == "O" %}
-<div class="col">
-<h3> O </h3>
-</div>
-{% else %}
-<div class="col">
-  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "20")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-{% endif %}
-
-
-
-
-{% if board[2][1] == "X" %}
-<div class="col">
-<h3> X </h3>
-</div>
-{% elif board[2][1] == "O" %}
-<div class="col">
-<h3> O </h3>
-</div>
-{% else %}
-<div class="col">
-  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "21")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-{% endif %}
-
-
-
-{% if board[2][2] == "X" %}
-<div class="col">
-<h3> X </h3>
-</div>
-{% elif board[2][2] == "O" %}
-<div class="col">
-<h3> O </h3>
-</div>
-{% else %}
-<div class="col">
-  <div class="p-3 border bg-light"><a href="{{url_for("Board" , type = "22")}}" class="text-decoration-none"> X turn</a></div>
-</div>
-{% endif %}
-
-
-
-
-</form>
-
-</div>
-</div>
-</div>
-
 {% if error is not none %}
-<br></br>
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-primary position-absolute top-20 start-50 translate-middle" role="alert">
   {{error}}
 </div>
 {% endif %}
 
+<style>
+h1 {
+  text-align: center;
+}
+td {
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+}
+table {
+  margin: 5px auto;
+}
+.vert {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+.hori {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+</style>
 
 
+<div class="container h-100 p-5">
+<div class="row h-100 justify-content-center align-items-center">
+<div class="col-70 col-md-100 col-lg-9">
+<h1><mark>Tic Tac Toe</mark></h1>
 <br></br>
-<div class="col-md-10 text-center">
-<a href ="{{url_for("clear")}}">Clear Board</a>
+<table>
+  <tr>
+
+<form method = "POST">
+{% if board[0][0] == "X" %}
+<td><h2> X </h2></td>
+{% elif board[0][0] == "O" %}
+<td><h2> O </h2> </td>
+{% else %}
+<td><a href="{{url_for("Board" , type = "00")}}" class="text-decoration-none"> X turn</a></td>
+{% endif %}
+
+{% if board[0][1] == "X" %}
+<td class = "vert"> <h2> X </h2> </td>
+{% elif board[0][1] == "O" %}
+<td class = "vert"> <h2> O </h2> </td>
+{% else %}
+<td class="vert"><a href="{{url_for("Board" , type = "01")}}" class="text-decoration-none"> X turn</a></td>
+{% endif %}
+
+
+{% if board[0][2] == "X" %}
+<td> <h2> X </h2> </td>
+{% elif board[0][2] == "O" %}
+<td> <h2> O </h2> </td>
+{% else %}
+<td><a href="{{url_for("Board" , type = "02")}}" class="text-decoration-none"> X turn</a></td>
+{% endif %}
+</tr>
+
+<tr>
+
+{% if board[1][0] == "X" %}
+<td class="hori"> <h2> X </h2> </td>
+{% elif board[1][0] == "O" %}
+<td class="hori"> <h2> O </h2> </td>
+{% else %}
+<td class="hori"><a href="{{url_for("Board" , type = "10")}}" class="text-decoration-none"> X turn</a></td>
+{% endif %}
+
+
+{% if board[1][1] == "X" %}
+<td class="vert hori">  <h2> X </h2> </td>
+{% elif board[1][1] == "O" %}
+<td class="vert hori"> <h2> O </h2> </td>
+{% else %}
+<td class="vert hori"><a href="{{url_for("Board" , type = "11")}}" class="text-decoration-none"> X turn</a></td>
+{% endif %}
+
+
+{% if board[1][2] == "X" %}
+<td class="hori"> <h2> X </h2> </td>
+{% elif board[1][2] == "O" %}
+<td class="hori"> <h2> O </h2> </td>
+{% else %}
+<td class="hori"><a href="{{url_for("Board" , type = "12")}}" class="text-decoration-none"> X turn</a></td>
+{% endif %}
+</tr>
+
+<tr>
+{% if board[2][0] == "X" %}
+<td > <h2> X </h2> </td>
+{% elif board[2][0] == "O" %}
+<td > <h2> O </h2> </td>
+{% else %}
+<td><a href="{{url_for("Board" , type = "20")}}" class="text-decoration-none"> X turn</a></td>
+{% endif %}
+
+{% if board[2][1] == "X" %}
+<td class = "vert" > <h2> X </h2></td>
+{% elif board[2][1] == "O" %}
+<td class="vert" > <h2> O </h2> </td>
+{% else %}
+<td class="vert"><a href="{{url_for("Board" , type = "21")}}" class="text-decoration-none"> X turn</a></td>
+{% endif %}
+
+{% if board[2][2] == "X" %}
+<td  > <h2> X </h2> </td>
+{% elif board[2][2] == "O" %}
+<td  > <h2> O </h2> </td>
+{% else %}
+<td><a href="{{url_for("Board" , type = "22")}}" class="text-decoration-none"> X turn</a></td>
+{% endif %}
+</form>
+</tr>
+
+</table>
+
+
+</div>
+</div>
 </div>
 
 

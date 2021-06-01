@@ -41,8 +41,6 @@ class Matrix3x3(object):
         print(self.board[i][j] , end = " | ")
       print("\n")
       print("-----------")
-
-
     
   def _add(self):
     if(self._turn() == 1):
