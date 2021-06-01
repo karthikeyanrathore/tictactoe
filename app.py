@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-import play
+from play import app as game
 
 if __name__ == "__main__":
-  play.app.run()
+  game.run()
 
 
 
