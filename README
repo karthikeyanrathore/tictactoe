@@ -7,3 +7,6 @@ chmod +x play.py
 ./play
 
 https://tictactoe-kr.herokuapp.com/ (BUGGY)
+
+Azure > heroku
+http://tictactoe-ai.azurewebsites.net/
