@@ -105,13 +105,12 @@ def Board():
 
 @app.route('/clear')
 def clear():
-  b = request.args.get('choose')
+  choose = request.args.get('choose')
   play._clear()
-  if(b == "simple"):
+  if(choose == "simple"):
     return redirect(url_for("Board"))
-  elif(b == "i"):
+  elif(choose == "ai"):
     return redirect(url_for("ai"))
-
 
 
 
