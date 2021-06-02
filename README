@@ -12,5 +12,11 @@ http://tictactoe-ai.azurewebsites.net/
 heroku
 https://tictactoe-kr.herokuapp.com/ (BUGGY)
 
-check changes && merge
+
+
+merge changes in v2 to main.
+git checkout main
+git merge v2
+git push
+
 
