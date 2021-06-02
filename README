@@ -3,8 +3,8 @@ Tic-Tac-Toe
 Board = 3x3
 https://en.wikipedia.org/wiki/Minimax
 
-chmod +x app.py
-./app
+chmod +x ai.sh
+./ai
 
 Azure > heroku
 http://tictactoe-ai.azurewebsites.net/
