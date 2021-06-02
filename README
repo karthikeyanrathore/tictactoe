@@ -3,8 +3,8 @@ Tic-Tac-Toe
 Board = 3x3
 https://en.wikipedia.org/wiki/Minimax
 
-chmod +x play.py
-./play
+chmod +x app.py
+./app
 
 Azure > heroku
 http://tictactoe-ai.azurewebsites.net/
@@ -12,11 +12,13 @@ http://tictactoe-ai.azurewebsites.net/
 heroku
 https://tictactoe-kr.herokuapp.com/ (BUGGY)
 
-
-
 merge changes in v2 to main.
 git checkout main
 git merge v2
 git push
+
+conclusion
+python is slow on web 
+
 
 
