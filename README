@@ -2,6 +2,7 @@ Tic-Tac-Toe
 
 Board = 3x3
 https://en.wikipedia.org/wiki/Minimax
+https://youtu.be/g7QWqKj0ch8?t=2114
 
 chmod +x ai.sh
 ./ai.sh
@@ -19,6 +20,11 @@ git push
 
 conclusion
 python is slow on web 
+
+Future
+- Using OpenCV and OCR to detect board x's and o's in real time.
+- Using Raspberry Pi to build  a hand robot to draw O , when playing with computer.
+- https://www.youtube.com/watch?v=vuuDcGoFi64
 
 
 
