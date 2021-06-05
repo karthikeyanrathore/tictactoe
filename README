@@ -4,10 +4,10 @@ Board = 3x3
 https://en.wikipedia.org/wiki/Minimax
 
 chmod +x ai.sh
-./ai
+./ai.sh
 
 Azure > heroku
-http://tictactoe-ai.azurewebsites.net/
+http://tictactoe-ai.azurewebsites.net/ai
 
 heroku
 https://tictactoe-kr.herokuapp.com/ (BUGGY)
