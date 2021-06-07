@@ -28,6 +28,7 @@ x - x
 - play._get("---/-o-/x-x") = best move for o.
 
 
+
 conclusion
 python is slow on web 
 
