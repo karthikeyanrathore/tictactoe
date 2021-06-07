@@ -22,6 +22,7 @@ conclusion
 python is slow on web 
 
 Future
+- input image of random state of the board , output best move for x or o.
 - Using OpenCV and OCR to detect board x's and o's in real time.
 - Using Raspberry Pi to build  a hand robot to draw O , when playing with computer.
 - https://www.youtube.com/watch?v=vuuDcGoFi64
