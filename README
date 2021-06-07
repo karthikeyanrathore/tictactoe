@@ -18,6 +18,16 @@ git checkout main
 git merge v2
 git push
 
+Notes
+- get("---/-o-/x-x")
+
+- - -
+- o -
+x - x 
+
+- play._get("---/-o-/x-x") = best move for o.
+
+
 conclusion
 python is slow on web 
 

@@ -35,7 +35,10 @@ class Matrix3x3(object):
   def _print(self):
     for i in range(3):
       for j in range(3):
-        print(self.board[i][j] , end = " | ")
+        if(self.board[i][j] == 0):
+          print("." , end = " | ")
+        else:
+          print(self.board[i][j] , end = " | ")
       print("\n")
       print("-----------")
 
@@ -253,11 +256,59 @@ class Matrix3x3(object):
     best_position = str(row) + str(col)
     return best_position
 
+  def _get(self , state):
+    for i in range(3):
+      for j in range(3):
+        if(i == 0):
+          if(state[0:3][j] == "-"):
+            continue
+          elif(state[0:3][j] == "x"):
+            self.board[i][j] = "X"
+          else:
+            self.board[i][j] = "O"
+        elif(i == 1):
+          if(state[4:7][j] == "-"):
+            continue
+          elif(state[4:7][j] == "x"):
+            self.board[i][j] = "X"
+          else:
+            self.board[i][j] = "O"
+        else:
+          if(state[8:11][j] == "-"):
+            continue
+          elif(state[8:11][j] == "x"):
+            self.board[i][j] = "X"
+          else:
+            self.board[i][j] = "O"
+    self._print()
+    if(state.count("x") > state.count("o")):
+      if(self._obest() == "-1-1"):
+        if(self._draw() == 1):
+          print("draw")
+        elif(self._check("X") == 1):
+          print("X won")
+        else:
+          print("O won")
+      else:
+        print("best move for o %d rowcol" % self._obest())
+    else:
+      if(self._xbest() == "-1-1"):
+        if(self._draw() == 1):
+          print("draw")
+        elif(self._check("X") == 1):
+          print("X won")
+        else:
+          print("O won")
+      else:
+        print("best move for x %d rowcol" % self._xbest())
 
+
+    
 board = [[0 for i in range(3)] for j in range(3)]
 for i in range(3):
   for j in range(3):
     board[i][j] = 0
 
 play = Matrix3x3(board)
+   
 
