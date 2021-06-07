@@ -13,7 +13,7 @@ def frame():
       break
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     cv.imshow('frame', gray)
-    if (cv.waitKey(1) == ord('q')):
+    if (cv.waitKey(1) == ord('5')):
       break
 
   cap.release()

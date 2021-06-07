@@ -39,4 +39,5 @@ Future
 - https://www.youtube.com/watch?v=vuuDcGoFi64
 
 
+git config credential.helper 'cache --timeout=243600'
 
