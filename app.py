@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 from flask import Flask
 from flask import abort, redirect, url_for , render_template , request , flash
+from flask_session import Session
 
 from play import play
 app = Flask(__name__)
-app.secret_key = 'usr'
-app.config['SESSION_TYPE'] = 'filesystem'
 
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 @app.route('/X/<int:moves>')
 def x_won(moves):

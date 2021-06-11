@@ -9,6 +9,9 @@ chmod +x ai.sh
 
 Azure > heroku
 http://tictactoe-ai.azurewebsites.net/ai
+issue
+How to handle multi users' requests separately in Flask?
+https://github.com/mnajib2018/Python-Flask-Tic-Tac-Toe/blob/master/application.py
 
 heroku
 https://tictactoe-kr.herokuapp.com/ (BUGGY)
