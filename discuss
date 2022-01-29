@@ -27,8 +27,10 @@ x - x
 
 - play._get("---/-o-/x-x") = best move for o.
 
+TODO
+- reinforcement learning
 
-conclusion
+Conclusion
 python is slow on web 
 
 Future
