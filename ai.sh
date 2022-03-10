@@ -4,5 +4,3 @@ chmod +x app.py
 ./app.py
 
 
-
-
