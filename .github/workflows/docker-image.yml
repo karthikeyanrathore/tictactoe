@@ -19,4 +19,4 @@ jobs:
     - name: run flask applicaton
       run: docker run --name tictactoe -d -p 8080:8080 karthikeyan/tictactoe
     - name: healthcheck
-      run: curl --fail http://0.0.0.0:8081 || exit 1
+      run: curl --fail http://0.0.0.0:8080 || exit 1
