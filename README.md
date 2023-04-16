@@ -1,6 +1,6 @@
 ## tictactoe
 
-![tictactoe](https://github.com/karthikeyanrathore/tictactoe/blob/main/docs/tictactoe-ai.gif)
+![tictactoe](https://github.com/karthikeyanrathore/tictactoe/blob/main//src/assets/demo.gif)
 
 ## running application 
 ```bash
