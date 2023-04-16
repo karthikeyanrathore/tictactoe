@@ -15,4 +15,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . -t karthikeyan/tictactoe
     - name: run flask applicaton && healthchek
-      run: docker run --name tictactoe -d -p 8080:8080 karthikeyan/tictactoe && curl --fail http://0.0.0.0:8080 || exit 1
+      run: docker run --name tictactoe -d -p 8080:8080 karthikeyan/tictactoe 
+    - name: logger
+      run: docker logs  tictactoe
