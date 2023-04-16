@@ -1,4 +1,4 @@
-## tictactoe
+## tictactoe [![Docker Image CI](https://github.com/karthikeyanrathore/tictactoe/actions/workflows/docker-image.yml/badge.svg)](https://github.com/karthikeyanrathore/tictactoe/actions/workflows/docker-image.yml)
 
 ![tictactoe](https://github.com/karthikeyanrathore/tictactoe/blob/main//src/assets/demo.gif)
 
