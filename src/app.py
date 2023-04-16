@@ -2,7 +2,7 @@
 from flask import Flask
 from flask import abort, redirect, url_for , render_template , request , flash
 
-from play import play
+from src.play import play
 app = Flask(__name__)
 app.secret_key = 'usr'
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -118,11 +118,5 @@ def clear():
 def undo():
   play._undo()
   return redirect(url_for("Board"))
-
-
-
-if __name__ == "__main__":
-  app.run(host="0.0.0.0")
-
 
 
