@@ -19,3 +19,14 @@ docker stop tictactoe
 docker rm tictactoe
 ```
 
+## How to upload and run from docker-hub?
+```bash
+# upload image to dockerhub registry (tag + push)
+docker tag karthikeyan/tictactoe karthikeyanisusingdocker/tictactoe
+docker push karthikeyanisusingdocker/tictactoe
+
+# pull it locally in a new environment + run app
+docker pull karthikeyanisusingdocker/tictactoe
+docker run karthikeyanisusingdocker/tictactoe
+```
+
