@@ -1,0 +1,16 @@
+version: "3.0"
+
+services:
+  tictactoe:
+    container_name: tictactoe
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080/tcp"
+    networks:
+      - tictactoe-net
+
+networks:
+  tictactoe-net:
+

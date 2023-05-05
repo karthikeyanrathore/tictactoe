@@ -3,6 +3,7 @@
 ![tictactoe](https://github.com/karthikeyanrathore/tictactoe/blob/main//src/assets/demo.gif)
 
 ## running application 
+1. via docker command
 ```bash
 # build docker image
 docker build . -t karthikeyan/tictactoe
@@ -17,6 +18,11 @@ docker stop tictactoe
 
 # remove service
 docker rm tictactoe
+```
+
+2. via docker-compose
+```bash
+docker-compose up --build tictactoe
 ```
 
 ## How to upload and run from docker-hub?
